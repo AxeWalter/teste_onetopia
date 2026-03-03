@@ -1,19 +1,19 @@
 from requests import Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
-import json
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
-total_number_of_cryptos = 100
 
 
-def request_api(limit, currency):
+# Para alterar a quantidade de Cryptos extraídas, modificar o parâmetro total_number_of_cryptos
+# Para alterar a moeda, alterar a abreviação BRL para moeda desejada (por exemplo, USD para dólar)
+def request_api(total_number_of_cryptos=100, currency="BRL"):
     url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest"
     parameters = {
         "start": '1',
-        "limit": limit,
+        "limit": total_number_of_cryptos,
         "convert": currency
     }
     headers = {
@@ -25,11 +25,8 @@ def request_api(limit, currency):
     session.headers.update(headers)
 
     try:
-      response = session.get(url, params=parameters)
-      data = json.loads(response.text)
-      print(data)
+        response = session.get(url, params=parameters)
+        return response.json()["data"]
     except (ConnectionError, Timeout, TooManyRedirects) as e:
-      print(e)
-
-
-request_api(total_number_of_cryptos, "BRL")
+        print(f"Error: {e}")
+        return None
