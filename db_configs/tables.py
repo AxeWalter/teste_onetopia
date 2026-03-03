@@ -1,19 +1,6 @@
-from sqlalchemy import create_engine, Column, String, Integer, Boolean, ForeignKey, Numeric, DateTime
-from sqlalchemy.orm import declarative_base
-import dotenv
-import os
+from sqlalchemy import Column, String, Integer, Boolean, ForeignKey, Numeric, DateTime
+from connection import Base
 
-dotenv.load_dotenv()
-
-user = os.getenv("DB_USER")
-password = os.getenv("DB_PASSWORD")
-host = os.getenv("DB_HOST")
-port = os.getenv("DB_PORT")
-database_name = os.getenv("DB_NAME")
-
-url = f"postgresql://{user}:{password}@{host}:{port}/{database_name}"
-engine = create_engine(url)
-Base = declarative_base()
 
 class Cryptos(Base):
     __tablename__ = 'cryptos'
@@ -32,6 +19,7 @@ class Monitoring(Base):
     # em vários testes o manior número de casas decimais foi 20, logo, uso 25 para ter uma segurança. Price usa 20
     # de escala pois há algumas "memecoins" que chegam a 18 casas decimais após a vírgula. O demais que usam 2 é devido
     # ao fato que as casas decimais não são tão relevantes.
+
     id = Column(Integer, primary_key=True)
     crypto_id = Column(Integer, ForeignKey('cryptos.id'))
     price = Column(Numeric(25,20), nullable=False)
@@ -42,4 +30,4 @@ class Monitoring(Base):
     percent_change_24h = Column(Numeric(5,2))
     timestamp = Column(DateTime, nullable=False)
 
-Base.metadata.create_all(engine)
+
