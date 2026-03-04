@@ -15,6 +15,11 @@ def insert_crypto(session, coin):
         )
         session.add(crypto)
         session.flush()
+    else:
+        if crypto.infinite_supply != coin["infinite_supply"]:
+            crypto.infinite_supply = coin["infinite_supply"]
+        if crypto.max_supply != coin["max_supply"]:
+            crypto.max_supply = coin["max_supply"]
 
     return crypto.id
 
