@@ -57,7 +57,7 @@ biggest_winner_view = DDL ("""
     JOIN cryptos ON cryptos.id = monitoring.crypto_id
     WHERE monitoring.percent_change_24h = (
         SELECT MAX(percent_change_24h) FROM monitoring m2 WHERE m2.timestamp = monitoring.timestamp
-    );
+    ) AND cryptos.is_stablecoin = False;
 """)
 
 biggest_loser_view = DDL ("""
@@ -71,7 +71,7 @@ biggest_loser_view = DDL ("""
     JOIN cryptos ON cryptos.id = monitoring.crypto_id
     WHERE monitoring.percent_change_24h = (
         SELECT MIN(percent_change_24h) FROM monitoring m2 WHERE m2.timestamp = monitoring.timestamp
-    );
+    ) AND cryptos.is_stablecoin = False;
 """)
 
 market_cap_dominance = DDL ("""
@@ -84,7 +84,7 @@ market_cap_dominance = DDL ("""
             monitoring.market_cap
         FROM cryptos
         JOIN monitoring ON cryptos.id = monitoring.crypto_id
-        WHERE monitoring.timestamp = (SELECT MAX(timestamp) FROM monitoring)
+        WHERE monitoring.timestamp = (SELECT MAX(timestamp) FROM monitoring) AND cryptos.is_stablecoin = False
         ORDER BY monitoring.rank
         LIMIT 10
     ) top10
