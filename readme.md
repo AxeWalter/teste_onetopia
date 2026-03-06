@@ -4,7 +4,7 @@ O objetivo principal desse projeto foi desenvolver um programa que consuma dados
 
 ## Visão Geral
 
-O projeto coleta dados das **Top 200 criptomoedas** da API do CoinMarketCap a cada 30 minutos, armazena em um banco de dados PostgreSQL e exibe as informações em uma dashboard no Power BI.<br>
+O projeto coleta dados das **Top 200 criptomoedas** da API do CoinMarketCap a cada 30 minutos, armazena em um banco de dados PostgreSQL e exibe as informações em um dashboard no Power BI.<br>
 **Nota:** CoinMarketCap organiza seu "rank" de top moedas de acordo com valor de mercado (market cap). Logo, podemos assumir que usamos o **Top 200 Criptomoedas por Valor de Mercado**
 
 ### Funcionalidades
@@ -13,7 +13,7 @@ O projeto coleta dados das **Top 200 criptomoedas** da API do CoinMarketCap a ca
 - Armazenamento de histórico de preços, valores de mercado, quantidade da moeda circulando, volumes nas últimas 24h e valorização/desvalorização nas últimas 24h
 - Identificação automática, com atributo no banco, de _stablecoins_
 - Identificação automática, com atributo no banco, se a moeda possui ou não fornecimento infinito
-- Criação de tabelas e views direto no script em python (`tables.py`)
+- Criação de tabelas e views direto no script em Python (`tables.py`)
 - Logging de execução e erros em um arquivo `log.log`
 - Dashboard interativa no Power BI
 
@@ -51,7 +51,9 @@ DB_NAME=
 ```
 
 ### 5. Opcional
-Em `main.py` há quatro variáveis que podem ser alteradas e modificam a execução do projeto
+O comportamento do script pode ser configurado através de quatro variáveis globais localizadas no início do arquivo
+`main.py`. Essas variáveis permitem ajustar o volume de dados e a frequência de atualização da pipeline. Por padrão
+eles são definidos como:
 ```
 NUMBER_OF_CRYPTOS = 200  # Quantidade de cryptos extraídas por API call
 CURRENCY = "BRL"  # Moeda que será utilizada para os dados da API
@@ -59,7 +61,7 @@ SCHEDULE_MINUTES_INTERVAL = 30  # Define de quantos em quantos minutos o script 
 CHECK_DELAY_FOR_SCHEDULE = 60  # Define de quanto em quanto tempo o script vai checar o tempo para ver se passaram 30m.
 ```
 
-O padrão é rodar a cada 30m e extrair 200 criptomoedas por API call formatados no Real Brasileiro (BRL).
+Assim, o padrão é executar a cada 30m e extrair 200 criptomoedas por API call formatadas no Real Brasileiro (BRL).
 
 ## Execução
 `python main.py`
@@ -71,7 +73,7 @@ O script irá:
 - Agendar a próxima execução para o que for definido em `SCHEDULE_MINUTES_INTERVAL`
 
 Na primeira execução um arquivo `log.log` será gerado na raiz do projeto para manter os logs de execução. O `filemode`
-desse arquivos está definido como `a`, logo, os logs são históricos. Caso deseje logs apenas da última execução, alterar
+desse arquivo está definido como `a`, logo, os logs são históricos. Caso deseje logs apenas da última execução, alterar
 `logging.basicConfig` em `main.py` para `w`.
 
 ## Dependências
