@@ -1,16 +1,20 @@
 # Desafio Técnico Onetopia
 
-O objetivo principal desse projeto foi desenvolver um programa que consuma dados de uma API de criptomoedas e os armazene em um banco de dados.
+O objetivo principal desse projeto foi desenvolver um programa que consuma dados de uma API de criptomoedas e os 
+armazene em um banco de dados.
 
 ## Visão Geral
 
-O projeto coleta dados das **Top 200 criptomoedas** da API do CoinMarketCap a cada 30 minutos, armazena em um banco de dados PostgreSQL e exibe as informações em um dashboard no Power BI.<br>
-**Nota:** CoinMarketCap organiza seu "rank" de top moedas de acordo com valor de mercado (market cap). Logo, podemos assumir que usamos o **Top 200 Criptomoedas por Valor de Mercado**
+O projeto coleta dados das **Top 200 criptomoedas** da API do CoinMarketCap a cada 30 minutos, armazena em um banco de
+dados PostgreSQL e exibe as informações em um dashboard no Power BI.<br>
+**Nota:** CoinMarketCap organiza seu "rank" de top moedas de acordo com valor de mercado (market cap). Logo, podemos 
+assumir que usamos o **Top 200 Criptomoedas por Valor de Mercado.**
 
 ### Funcionalidades
 
 - Coleta automática de dados a cada 30 minutos via scheduler
-- Armazenamento de histórico de preços, valores de mercado, quantidade da moeda circulando, volumes nas últimas 24h e valorização/desvalorização nas últimas 24h
+- Armazenamento de histórico de preços, valores de mercado, quantidade da moeda circulando, volumes nas últimas 24h 
+e valorização/desvalorização nas últimas 24h
 - Identificação automática, com atributo no banco, de _stablecoins_
 - Identificação automática, com atributo no banco, se a moeda possui ou não fornecimento infinito
 - Criação de tabelas e views direto no script em Python (`tables.py`)
@@ -36,7 +40,8 @@ cd teste_onetopia
 `pip install -r requirements.txt`
 
 ### 3. Crie um banco de dados PostgreSQL
-Crie um banco de dados no PostgreSQL e salve o seu `usuário`, `senha`, `host` e `porta` para utilizarmos no próximo passo. <br>
+Crie um banco de dados no PostgreSQL e salve o seu `usuário`, `senha`, `host` e `porta` para utilizarmos no 
+próximo passo. <br>
 Não é necessário criar as tabelas, essas serão criadas automaticamente ao rodar `main.py`.
 
 ### 4. Crie um `.env` e configure as variáveis de ambiente
