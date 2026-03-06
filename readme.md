@@ -83,6 +83,9 @@ desse arquivo está definido como `a`, logo, os logs são históricos. Caso dese
 
 ## Power BI
 
+### Visualização Rápida
+Para visualizar o dashboard com os dados já carregados, abra o arquivo `dashPronta.pbix` no Power BI Desktop.
+
 ### Conexão
 1. Abra o arquivo `dashEstrutura.pbit` no Power BI Desktop
 2. Inicialmente o arquivo vai carregar apenas a estrutura, sem os dados
