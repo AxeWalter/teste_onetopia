@@ -91,28 +91,28 @@ Para visualizar o dashboard com os dados já carregados, abra o arquivo `dashPro
 2. Inicialmente o arquivo vai carregar apenas a estrutura, sem os dados
 3. Siga o caminho **Transformar Dados** → **Configurações da Fonte de Dados**
 4. Selecione a conexão e clique em **Alterar Fonte**
-5. Inserir o servidor e nome do seu banco de dados PostgreSQL
+5. Insira o servidor e nome do seu banco de dados PostgreSQL
 6. Feche essa janela e clique em **Fechar e Aplicar** para salvar as alterações
 7. Power BI vai carregar os dados e automaticamente atualizar as visualizações
 
 ### Funcionalidades
 
-**Nota: essa dashboard foi projetada para lidar com dados temporais, logo, para funcionalidade ideal é necessário 
+**Nota: essa dashboard foi projetada para lidar com dados temporais, logo, para funcionamento ideal é necessário 
 ter um histórico de dados. Visualizações como a variação do valor de mercado só funcionarão com dados históricos.**
 - Barra superior com informações globais como:
   - Valor de mercado atual agregado (top 200)
   - Variação desse valor de mercado nos últimos 30m
-  - Volume total nas últimas 24h
+  - Volume total nas últimas 24h (top 200)
   - Preço atual da Bitcoin em Real
   - Preço atual da Ethereum em Real
-  - Criptomoeda com maior valorização nas últimas 24h
-  - Criptomoeda com maior desvalorização nas últimas 24h
-- Gráfico com últimos 5 valores de mercado agregados
+  - Criptomoeda com maior valorização nas últimas 24h (no top 200)
+  - Criptomoeda com maior desvalorização nas últimas 24h (no top 200)
+- Gráfico com últimos 5 valores de mercado agregados (top 200)
 - Gráfico de dominância de mercado, mostrando a porcentagem de valor de mercado das top 10 criptomoedas e agregando as
-demais como _Others_ (considera da 11-200)
-- Gráfico das 5 maiores valorizações nas últimas 24h
-- Gráfico das 5 maiores desvalorizações nas últimas 24h
-- Gráfico de histórico de preço filtrado por criptomoeda e período
+demais como _Others_ (que considera da 11-200)
+- Gráfico das 5 maiores valorizações nas últimas 24h (no top 200)
+- Gráfico das 5 maiores desvalorizações nas últimas 24h (no top 200)
+- Gráfico de histórico de preço filtrado por criptomoeda e período (top 200)
 
 **Limitação Conhecida**: o _slicer_ de período utilizado para filtrar o gráfico de histórico utiliza horário UTC por
 padrão. Logo, considerando GMT-3 (Brasil), o slicer sempre parte de 3h na frente. Para ter precisão, sempre adicione
